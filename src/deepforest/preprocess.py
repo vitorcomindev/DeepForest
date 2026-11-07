@@ -245,9 +245,8 @@ def split_raster(
 
     # Process annotations
     annotations = load_annotations(annotations_file, root_dir)
-    validate_annotations(annotations, numpy_image, path_to_raster)
-
     image_annotations = annotations[annotations.image_path == image_name]
+    validate_annotations(image_annotations, numpy_image, path_to_raster)
 
     if not allow_empty and image_annotations.empty:
         raise ValueError(
